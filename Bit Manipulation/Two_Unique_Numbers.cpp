@@ -36,7 +36,7 @@ int main()
         cin>>arr[i];
         num=(num^arr[i]);
     }
-    //cout<<num;
+    cout<<num<<endl;
     int temp=num;
     int pos=0;
     while((temp&1)!=1)
