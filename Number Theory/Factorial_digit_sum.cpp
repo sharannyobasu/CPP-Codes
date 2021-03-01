@@ -2,10 +2,10 @@
 
 Problem Statement :
 
-Given a positive integer ‘N’. You need to find the smallest positive integer ‘X’
+Given a positive integer N. You need to find the smallest positive integer X
 such that the sum of the factorial of its digit is equal to ‘N’.
 
-For Example-: Consider ‘N’ = 7, then ‘X’ = 13, because sum of factorial of its 
+For Example-: Consider N = 7, then X = 13, because sum of factorial of its 
 digits will be 1! + 3! = 1 + 6 = 7, and it is the smallest such integer.
 
 SOLUTION : 

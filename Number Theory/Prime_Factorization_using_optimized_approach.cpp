@@ -26,7 +26,7 @@ void printfactors(int n)
             {
               count++; //keeps account of how many times i is dividing n
               n=n/i;
-              //cout<<"Value is : "<<n<<endl;
+              cout<<"Value is : "<<n<<endl;
             }
             if(count>0)
             {
