@@ -1,12 +1,9 @@
-/*      DIAMETER OF A BINARY TREE       
-
-Complexity : 0(N^2)
-*/
+/*      NUMBER OF LEAF NODES IN BINARY TREE     */
 
 
 #include<iostream>
-#include<vector>
 using namespace std;
+
 
 class node
 {
@@ -19,19 +16,7 @@ class node
         data=d;
         left=right=NULL;
     }
-    
 };
-
-int height(node*root)
-{
-    if(!root)
-    {
-        return 0;
-    }
-    int l=height(root->left);
-    int r=height(root->right);
-    return 1+max(l,r);
-}
 
 node*buildtree()
 {
@@ -44,7 +29,6 @@ node*buildtree()
     node*root=new node(rootdata);
     root->left=buildtree();
     root->right=buildtree();
-    
 }
 
 void printree(node*root)
@@ -58,23 +42,25 @@ void printree(node*root)
     printree(root->right);
 }
 
-int diameter(node*root)     // main calling function
+int leaf_nodes_count(node*root)
 {
     if(!root)
     {
         return 0;
     }
-    int h1=height(root->left);
-    int h2=height(root->right);
-    int op1=h1+h2;
-    int op2=diameter(root->left);
-    int op3=diameter(root->right);
-    return max(op1, max(op2,op3));
+    if(!root->left and !root->right)
+    {
+        return 1;
+    }
+    int left_count=leaf_nodes_count(root->left);
+    int right_count=leaf_nodes_count(root->right);
+    return left_count+right_count;
 }
 
 int main()
 {
     node*root=buildtree();
     printree(root);
-    cout<<endl<<diameter(root);
+    cout<<endl;
+    cout<<"No. of leaf nodes : "<<leaf_nodes_count(root);
 }

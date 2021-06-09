@@ -1,9 +1,18 @@
-/*      COUNT NODES IN BINARY TREE      */
+/*      MIRROR OF A BINARY TREE   
+
+TIME COMPLEXITY : O(n)
+SPACE COMPLEXITY : O(h) (h -> height of tree)
+WORST CASE TIME COMPLEXITY : O(N), when tree is highly skewed
+
+*/
 
 
-#include<iostream>
+#include<bits/stdc++.h>
 #include<vector>
+#include<queue>
+#include<stack>
 using namespace std;
+
 
 class node
 {
@@ -16,19 +25,7 @@ class node
         data=d;
         left=right=NULL;
     }
-    
 };
-
-int height(node*root)
-{
-    if(!root)
-    {
-        return 0;
-    }
-    int l=height(root->left);
-    int r=height(root->right);
-    return 1+max(l,r);
-}
 
 node*buildtree()
 {
@@ -41,7 +38,6 @@ node*buildtree()
     node*root=new node(rootdata);
     root->left=buildtree();
     root->right=buildtree();
-    
 }
 
 void printree(node*root)
@@ -55,18 +51,26 @@ void printree(node*root)
     printree(root->right);
 }
 
-int count(node*root)        //main calling function
+void mirror(node*root)
 {
     if(!root)
     {
-        return 0;
+        return;
     }
-    return 1+count(root->left)+count(root->right);
+    mirror(root->left);
+    mirror(root->right);
+    node*temp=NULL;
+    temp=root->right;
+    root->right=root->left;
+    root->left=temp;
+    
 }
 
 int main()
 {
     node*root=buildtree();
     printree(root);
-    cout<<endl<<count(root);
+    cout<<endl;
+    mirror(root);
+    printree(root);
 }
